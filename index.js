@@ -26,12 +26,8 @@ database.connect();
 // Middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-	cors({
-		origin: "*",
-		credentials: true,
-	})
-);
+app.use(cors());
+
 app.use(
 	fileUpload({
 		useTempFiles: true,
@@ -39,13 +35,6 @@ app.use(
 	})
 );
 
-router.get("/", (req, res) => {
-	res.setHeader("Access-Control-Allow-Origin", "*")
-	res.setHeader("Access-Control-Allow-Credentials", "true");
-	res.setHeader("Access-Control-Max-Age", "1800");
-	res.setHeader("Access-Control-Allow-Headers", "content-type");
-	res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" ); 
-});
 
 // Connecting to cloudinary
 cloudinaryConnect();
