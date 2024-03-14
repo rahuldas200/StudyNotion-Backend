@@ -1,6 +1,7 @@
 // Importing necessary modules and packages
 const express = require("express");
 const app = express();
+const router = express.Router()
 const userRoutes = require('./routes/User');
 const profileRoutes = require('./routes/Profile');
 const courseRoutes = require('./routes/Course');
@@ -14,7 +15,7 @@ const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
 
 // Setting up port number
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8000;
 
 // Loading environment variables from .env file
 dotenv.config();
