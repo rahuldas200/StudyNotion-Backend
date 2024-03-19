@@ -13,6 +13,7 @@ const cors = require("cors");
 const { cloudinaryConnect } = require("./config/cloudinary");
 const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 // Setting up port number
 const PORT = process.env.PORT || 8000;
@@ -47,6 +48,18 @@ app.use(
 
 // Connecting to cloudinary
 cloudinaryConnect();
+
+const apiProxy = createProxyMiddleware("/api", {
+	target: "https://study-notion-backend-eight.vercel.app",
+	changeOrigin: true,
+	pathRewrite: {
+	  "^/api": "/api/v1",
+	},
+  });
+ 
+  
+// Use proxy middleware
+app.use(apiProxy);
 
 // Setting up routes
 app.use("/api/v1/auth", userRoutes);
