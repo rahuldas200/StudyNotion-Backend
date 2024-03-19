@@ -46,7 +46,7 @@ cloudinaryConnect();
 
 
 // Use proxy middleware
-app.use(apiProxy);
+
 
 // Setting up routes
 app.use("/api/v1/auth", userRoutes);
