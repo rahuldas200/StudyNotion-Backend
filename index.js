@@ -26,12 +26,10 @@ database.connect();
 app.use(express.json());
 app.use(cookieParser());
 app.use(
-  cors({
-    origin: "*", // Allow requests from all origins
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allow specified HTTP methods
-    allowedHeaders: "*", // Allow all headers
-    credentials: true, // Allow credentials
-  })
+	cors({
+		origin: "*",
+		credentials: true,
+	})
 );
 
 app.use(
